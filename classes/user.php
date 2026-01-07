@@ -44,4 +44,9 @@ class User {
         $stm = $this->db->prepare("update users set nom = ? , prenom = ? , email = ? , roleUser = ? where id = ?");
         return $stm->execute([$nom , $prenom , $email , $role , $id]);
     }
+
+    public function updateEtat(int $id, string $etat){
+        $stm = $this->db->prepare("Update users set etat = ? where id = ?");
+        return $stm->execute([$etat , $id]);
+    }
 }

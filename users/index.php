@@ -24,7 +24,13 @@
         <td><?= $usr['prenom'] ?></td>
         <td><?= $usr['email'] ?></td>
         <td><?= $usr['roleUser'] ?></td>
-        <td><?= $usr['etat'] ?></td>
+        <td>
+            <?php if ($usr['etat'] === 'active'): ?>
+                <a href="etat.php?id=<?= $usr['id'] ?>&etat=desactive">Désactiver</a>
+            <?php else: ?>
+                <a href="etat.php?id=<?= $usr['id'] ?>etat=active">Avtiver</a>
+            <?php endif; ?>
+        </td>
         <td>
             <a href="edit.php?id=<?= $usr['id'] ?>">Modifier</a>
             <a href="delete.php?id=<?= $usr['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">Supprimer</a>
