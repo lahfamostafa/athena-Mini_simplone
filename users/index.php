@@ -8,7 +8,7 @@
     }
 
     $u = new User();
-    $users = $u->getAll()
+    $users = $u->getAll();
 ?>
 
 <h1>Liste des utilisateurs</h1>
@@ -26,9 +26,9 @@
         <td><?= $usr['roleUser'] ?></td>
         <td>
             <?php if ($usr['etat'] === 'active'): ?>
-                <a href="etat.php?id=<?= $usr['id'] ?>&etat=desactive">Désactiver</a>
+                <a href="etat.php?id=<?= $usr['id'] ?>&etat=desactive&role=<?= $usr['roleUser'] ?>" onclick="return confirm('Changer l\'état de cet utilisateur ?')">Désactiver</a>
             <?php else: ?>
-                <a href="etat.php?id=<?= $usr['id'] ?>etat=active">Avtiver</a>
+                <a href="etat.php?id=<?= $usr['id'] ?>&etat=active&role=<?= $usr['roleUser'] ?>">Avtiver</a>
             <?php endif; ?>
         </td>
         <td>
@@ -37,4 +37,14 @@
         </td>
     </tr>
     <?php endforeach; ?>
+    
+    <?php if (isset($_SESSION['alert'])): ?>
+        <script>
+            alert("<?=$_SESSION['alert'] ?>");
+        </script>
+        
+    
+
+    <?php unset($_SESSION['alert']); endif; ?>
+
 </table>
