@@ -19,7 +19,7 @@
                 case 'admin':
                     header("Location: ../dashboard/admin.php");
                     break;
-                case 'chef':
+                case 'chef_projet':
                     header("Location: ../dashboard/chef.php");
                     break;
                 case 'membre':

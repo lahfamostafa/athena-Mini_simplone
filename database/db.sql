@@ -28,6 +28,7 @@ create table sprint(
     nom varchar(100) Not null,
     date_debut date Not null,
     date_fin date Not null,
+    etat ENUM('active','terminé') DEFAULT 'active',
     idProjet int Not null,
     foreign key (idProjet) references projet(id) 
 )ENGINE=InnoDB;

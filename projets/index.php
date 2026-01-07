@@ -5,34 +5,41 @@ require_once "../classes/Projet.php";
 $user = Session::user();
 
 if(!$user || $user['role'] !== 'chef_projet'){
-    die("Accès interdit");
+    die("⛔ Accès interdit");
 }
 
 $projetModel = new Projet();
+
 $projets = $projetModel->getByChefProjet($user['id']);
 ?>
 
-<h1>Mes projets</h1>
+<h1>Mes Projets</h1>
 
-<a href="../projets/create.php">Nouveau projet</a>
+<a href="create.php">Créer un nouveau projet</a>
 
 <table>
 <tr>
     <th>Titre</th>
     <th>Description</th>
-    <th>Début</th>
-    <th>Fin</th>
+    <th>Date début</th>
+    <th>Date fin</th>
     <th>Etat</th>
     <th>Actions</th>
 </tr>
 
 <?php foreach($projets as $p): ?>
 <tr>
-    <td><?= $p['titre'] ?></td>
-    <td><?= $p['descriptionP'] ?></td>
+    <td><?= htmlspecialchars($p['titre']) ?></td>
+    <td><?= htmlspecialchars($p['descriptionP']) ?></td>
     <td><?= $p['date_debut'] ?></td>
     <td><?= $p['date_fin'] ?></td>
-    <td><?= $p['etat'] ?></td>
+    <td>
+        <?php if ($p['etat'] === 'active'): ?>
+            <a href="etat.php?id=<?= $p['id'] ?>&etat=desactive" onclick="return confirm('Changer l\'état de ce projet ?')">Désactiver</a>
+        <?php else: ?>
+            <a href="etat.php?id=<?= $p['id'] ?>&etat=active">Activer</a>
+        <?php endif; ?>
+    </td>
     <td>
         <a href="../sprints/index.php?idProjet=<?= $p['id'] ?>">Voir Sprints</a> |
         <a href="../sprints/create.php?idProjet=<?= $p['id'] ?>">Ajouter Sprint</a> |
