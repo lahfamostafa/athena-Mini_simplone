@@ -15,5 +15,5 @@ $id = (int) $_GET['id'];
 $p = new Projet();
 $p->delete($id);
 
-header("Location: index.php");
+header("Location: ../dashboard/chef.php");
 exit;

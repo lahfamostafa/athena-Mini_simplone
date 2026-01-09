@@ -1,4 +1,5 @@
 <?php
+require_once "../includes/header.php";
 require_once "../core/guard.php";
 require_once "../classes/Projet.php";
 require_once "../classes/User.php";
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pr['id']
     ]);
 
-    header("Location: index.php");
+    header("Location: ../dashboard/chef.php");
     exit;
 }
 ?>

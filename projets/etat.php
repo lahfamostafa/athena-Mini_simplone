@@ -21,5 +21,12 @@ if (!in_array($etat, ['active','desactive'])) {
 $p = new Projet();
 $p->updateEtat($id, $etat);
 
-header("Location: index.php");
+switch($user['role']) {
+    case 'admin':
+        header("Location: ../projets/projets.php");
+        break;
+    case 'chef_projet':
+        header("Location: ../dashboard/chef.php");
+        break;
+}
 exit;

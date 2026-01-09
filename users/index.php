@@ -1,4 +1,5 @@
 <?php
+    require_once "../includes/header.php";
     require_once "../core/guard.php";
     require_once "../classes/user.php";
 

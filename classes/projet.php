@@ -52,5 +52,14 @@ class Projet {
             $stm->execute([$idUser]);
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getAll(){
+            $stm = $this->db->query("
+                SELECT p.*, u.nom, u.prenom 
+                FROM projet p
+                JOIN users u ON p.idUser = u.id
+            ");
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
     

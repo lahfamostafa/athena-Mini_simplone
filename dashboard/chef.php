@@ -1,4 +1,5 @@
 <?php
+require_once "../includes/header.php";
 require_once "../core/guard.php";
 require_once "../classes/Projet.php";
 
@@ -12,7 +13,7 @@ $projetModel = new Projet();
 $projets = $projetModel->getByChefProjet($user['id']);
 ?>
 
-<h1>Mes projets</h1>
+<h1>Mes Projets</h1>
 
 <a href="../projets/create.php">Nouveau projet</a>
 
@@ -42,3 +43,4 @@ $projets = $projetModel->getByChefProjet($user['id']);
 </tr>
 <?php endforeach; ?>
 </table>
+    <?php require_once "../includes/footer.php"; ?>

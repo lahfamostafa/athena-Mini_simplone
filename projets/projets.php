@@ -14,7 +14,7 @@ $projets = $projetModel->getAll();
 ?>
 
 <h2>Liste des projets</h2>
-<a href="create.php">Nouveau Projet</a>
+<a href="create.php">Nouveau projet</a>
 
 <table>
 <tr>
@@ -32,9 +32,18 @@ $projets = $projetModel->getAll();
     <td><?= htmlspecialchars($p['nom'] . " " . $p['prenom']) ?></td>
     <td><?= $p['date_debut'] ?></td>
     <td><?= $p['date_fin'] ?></td>
-    <td><?= $p['etat'] ?></td>
     <td>
-        <a href="../sprints/index.php?idProjet=<?= $p['id'] ?>">Voir Sprints</a>
+        <?php if($p['etat'] === 'active'): ?>
+            <a href="etat.php?id=<?= $p['id'] ?>&etat=desactive" onclick="return confirm('Changer l\'état du projet ?')">Désactiver</a>
+        <?php else: ?>
+            <a href="etat.php?id=<?= $p['id'] ?>&etat=active">Activer</a>
+        <?php endif; ?>
+    </td>
+    <td>
+        <a href="../sprints/index.php?idProjet=<?= $p['id'] ?>">Voir Sprints</a> |
+        <a href="../sprints/create.php?idProjet=<?= $p['id'] ?>">Ajouter Sprint</a> |
+        <a href="edit.php?id=<?= $p['id'] ?>">Modifier</a> |
+        <a href="delete.php?id=<?= $p['id'] ?>" onclick="return confirm('Supprimer projet ?')">Supprimer</a>
     </td>
 </tr>
 <?php endforeach; ?>

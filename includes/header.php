@@ -4,7 +4,7 @@ Session::start();
 $user = Session::user();
 
 if(!$user){
-    header("Location: ../auth/login.php");
+    header("Location: ../public/login.php");
     exit;
 }
 
@@ -39,17 +39,17 @@ $role = $user['role'];
         <?php if($role === 'admin'): ?>
             <a href="../dashboard/admin.php">Dashboard</a>
             <a href="../users/index.php">Utilisateurs</a>
-            <a href="../projets/index.php">Projets</a>
+            <a href="../projets/projets.php">Projets</a>
         <?php elseif($role === 'chef_projet'): ?>
             <a href="../dashboard/chef.php">Mes projets</a>
-            <a href="../projets/my_projets.php">Projets</a>
+            <a href="../projets/index.php">Projets</a>
             <a href="../sprints/my_sprints.php">Mes sprints</a>
         <?php elseif($role === 'membre'): ?>
             <a href="../dashboard/membre.php">Mes tâches</a>
             <a href="../projets/my_projets.php">Projets</a>
             <a href="../sprints/my_sprints.php">Sprints</a>
         <?php endif; ?>
-        <a href="../auth/logout.php">Déconnexion</a>
+        <a href="../public/logout.php">Déconnexion</a>
     </nav>
 </header>
 

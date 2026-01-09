@@ -1,4 +1,5 @@
 <?php
+require_once "../includes/header.php";
 require_once "../classes/Sprint.php";
 
 $idProjet = (int) $_GET['idProjet'];

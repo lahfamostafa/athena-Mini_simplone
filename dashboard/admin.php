@@ -1,4 +1,5 @@
 <?php
+require_once "../includes/header.php";
 require_once "../core/guard.php";
 
 $user = Session::user();
@@ -24,7 +25,7 @@ if ($user['role'] !== 'admin') {
 
     <h2>Gestion des projets</h2>
     <ul>
-        <li><a href="../projects/index.php">Liste des projets</a></li>
+        <li><a href="../projects/projets.php">Liste des projets</a></li>
         <li><a href="../projects/create.php">Ajouter un projet</a></li>
     </ul>
 
